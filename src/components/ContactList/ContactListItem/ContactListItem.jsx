@@ -5,11 +5,11 @@ import {
   Button,
 } from './ContactListItem.styled';
 
-export const ContactListItem = ({ name, number, id, deleteContact }) => {
+export const ContactListItem = ({ name, phone, id, deleteContact }) => {
   return (
     <ContactListItemBlock>
       <ContactItemText>
-        {name}: {number}
+        {name}: {phone}
       </ContactItemText>
       <Button type="button" onClick={() => deleteContact(id)}>
         Delete
@@ -21,6 +21,6 @@ export const ContactListItem = ({ name, number, id, deleteContact }) => {
 ContactListItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
   deleteContact: PropTypes.func.isRequired,
 };
