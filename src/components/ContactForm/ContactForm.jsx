@@ -11,7 +11,7 @@ import { usePhonebook } from 'redux/phonebookSlice';
 export const ContactForm = () => {
   const { contacts, addContact } = usePhonebook();
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
 
   const nameInputId = nanoid();
   const numberInputId = nanoid();
@@ -21,7 +21,7 @@ export const ContactForm = () => {
   };
 
   const handleNumberChange = e => {
-    setNumber(e.currentTarget.value);
+    setPhone(e.currentTarget.value);
   };
 
   const handleSubmit = e => {
@@ -36,15 +36,16 @@ export const ContactForm = () => {
     const contact = {
       id: nanoid(),
       name,
-      number,
+      phone,
     };
-    addContact(contact);
+    addContact({ name, phone });
+
     resetForm();
   };
 
   const resetForm = () => {
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -66,12 +67,12 @@ export const ContactForm = () => {
         Number
         <FormInput
           type="tel"
-          name="number"
+          name="phone"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           onChange={handleNumberChange}
-          value={number}
+          value={phone}
           id={numberInputId}
         ></FormInput>
       </FormLabel>
