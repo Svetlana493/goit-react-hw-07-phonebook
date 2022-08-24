@@ -32,13 +32,13 @@ export const ContactList = () => {
       {isLoading && <Loader />}
       {contacts.length && visibleContacts.length && !isLoading ? (
         <ContactListContainer>
-          {visibleContacts.map(({ id, name, number }) => {
+          {visibleContacts.map(({ id, name, phone }) => {
             return (
               <ContactListItem
                 key={id}
                 id={id}
                 name={name}
-                number={number}
+                phone={phone}
                 deleteContact={deleteContact}
               />
             );
